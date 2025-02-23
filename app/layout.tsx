@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import { Anybody, Inter, Lexend } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
-const anybody = Anybody({ subsets: ['latin'], variable: '--anybody' });
-const lexend = Lexend({ subsets: ['latin'], variable: '--lexend' });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${anybody.variable} ${lexend.variable} antialiased`}>
-        {children}
-      </body>
+      <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }

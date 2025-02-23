@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { Component } from '@/components/sections/chart';
+
 export default function Home() {
   return (
     <div className="relative">
@@ -108,6 +110,8 @@ export default function Home() {
           <p className="mb-4 text-2xl font-extrabold">Utilisateurs</p>
         </div>
       </div>
+
+      <Component />
     </div>
   );
 }
