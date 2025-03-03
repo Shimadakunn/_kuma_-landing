@@ -23,20 +23,20 @@ const calculateYearlyCompoundInterest = (principal: number, ratePerYear: number,
 
 const generateChartData = (initialValue: number) => {
   const years = 25;
-  const bookletRate = 0.1; // 10% yearly
+  const kumaRate = 0.1; // 10% yearly
   const livretRate = 0.025; // 2.5% yearly
 
   return Array.from({ length: years + 1 }, (_, index) => ({
     year: index.toString(),
-    booklet: Math.round(calculateDailyCompoundInterest(initialValue, bookletRate, index)),
+    kuma: Math.round(calculateDailyCompoundInterest(initialValue, kumaRate, index)),
     livret: Math.round(calculateYearlyCompoundInterest(initialValue, livretRate, index)),
   }));
 };
 
 const chartConfig = {
-  booklet: {
-    label: 'Booklet - 10% ',
-    color: '#BEBEF1',
+  kuma: {
+    label: 'Kuma - 10% ',
+    color: '#ffffff',
   },
   livret: {
     label: 'Livret A - 2.5%  ',
@@ -44,7 +44,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function Component() {
+export default function YieldSimulation() {
   const [value, setValue] = useState(2500);
   const chartData = useMemo(() => generateChartData(value), [value]);
 
@@ -81,19 +81,19 @@ export function Component() {
             content={<ChartTooltipContent indicator="dot" className="rounded-lg bg-white" />}
           />
           <Area
-            dataKey="booklet"
+            dataKey="kuma"
             type="monotone"
-            fill="#DD76FB"
+            fill="#000"
             fillOpacity={0.4}
-            stroke="#DD76FB"
+            stroke="#000"
             strokeWidth={2}
           />
           <Area
             dataKey="livret"
             type="monotone"
-            fill="#01E4FB"
+            fill="#ffffff"
             fillOpacity={0.4}
-            stroke="#01E4FB"
+            stroke="#ffffff"
             strokeWidth={2}
           />
           <ChartLegend content={<ChartLegendContent />} />
