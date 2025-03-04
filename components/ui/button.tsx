@@ -7,7 +7,7 @@ import { HTMLMotionProps, motion } from 'framer-motion';
 import * as React from 'react';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-black transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
@@ -21,7 +21,7 @@ const buttonVariants = cva(
         white: 'bg-white text-black',
       },
       size: {
-        default: 'h-12 px-8',
+        default: 'h-12 px-6',
         sm: 'h-8 rounded-md px-3 text-xs',
         lg: 'h-10 rounded-md px-8',
         icon: 'h-9 w-9',
@@ -97,13 +97,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}>
         {animateBackground && (
           <motion.div
-            className="absolute inset-0 rounded-2xl bg-white"
+            className="absolute inset-0 rounded-xl bg-white"
             initial={{ opacity: 0 }}
             whileTap={{ opacity: 0.4 }}
             transition={{ duration: 0.2 }}
           />
         )}
-        <span className="relative z-10">{children}</span>
+        <span className="relative z-10 flex flex-row items-center gap-2">{children}</span>
       </Comp>
     );
   }

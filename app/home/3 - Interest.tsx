@@ -35,20 +35,22 @@ export default function Interest() {
   const formattedValue = useTransform(animatedValue, (value) => value.toFixed(2) + '%');
 
   return (
-    <div className="flex h-[75vh] items-center justify-around" ref={ref}>
-      <div className="flex-col items-start justify-center gap-4">
-        <h1 className="text-6xl font-black">Un taux d&apos;intérêt de </h1>
-        <h1 className="text-6xl font-black">
+    <div
+      className="flex flex-col items-start justify-between md:h-[50vh] md:flex-row md:items-center"
+      ref={ref}>
+      <div className="flex-col items-start justify-center pl-4 md:pl-0">
+        <h1 className="text-3xl font-black md:text-7xl">Un taux d&apos;intérêt de </h1>
+        <h1 className=" text-3xl font-black md:mt-4 md:text-7xl">
           <span className="rounded-xl bg-black px-4 py-1 text-white">
             <motion.span>{formattedValue}</motion.span>
           </span>{' '}
-          par an
+          par an.
         </h1>
-        <p className="mt-2 text-2xl font-bold text-gray-400">
+        <p className="mt-2 text-lg font-bold text-gray-400 md:mt-8 md:text-2xl">
           Un rendement plus qu&apos;avantageux.
         </p>
       </div>
-      <div className="w-[45%]">
+      <div className="mt-8 w-full md:mt-0 md:w-[45%]">
         <YieldChart />
       </div>
     </div>
@@ -124,8 +126,8 @@ const YieldChart = () => {
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-start justify-center">
-      <div className="mb-4 flex w-full justify-end gap-8 pr-24">
+    <div className=" flex h-full w-full flex-col items-start justify-center">
+      <div className="flex w-full justify-end gap-8 pr-12 md:pr-24">
         {timeframes.map((tf) => (
           <button
             key={tf}
@@ -139,13 +141,13 @@ const YieldChart = () => {
       </div>
       <div className="relative w-full">
         {isLoading && (
-          <div className="absolute inset-0 flex h-[500px] items-center justify-center bg-white">
+          <div className="absolute inset-0 flex h-[200px] items-center justify-center bg-white">
             <div className="h-6 w-6 animate-spin rounded-full border-2 border-black border-t-transparent" />
           </div>
         )}
         <div className={isLoading ? 'invisible' : ''}>
-          <ResponsiveContainer width="100%" height={500}>
-            <LineChart data={chartData} margin={{ top: 20, right: 80, left: 20, bottom: 20 }}>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={chartData} margin={{ top: 20, right: 50, left: 20, bottom: 20 }}>
               <XAxis
                 dataKey="date"
                 tickFormatter={(timestamp) => {
@@ -160,7 +162,7 @@ const YieldChart = () => {
                 tickLine={false}
                 axisLine={{ strokeWidth: 2 }}
                 interval="preserveStartEnd"
-                minTickGap={50}
+                minTickGap={20}
               />
               <YAxis
                 orientation="left"
@@ -170,7 +172,7 @@ const YieldChart = () => {
                 tick={{ fontSize: 12, fontWeight: 900 }}
                 tickLine={false}
                 tickCount={5}
-                width={50}
+                width={20}
                 axisLine={{ strokeWidth: 2 }}
               />
               <ReferenceLine
@@ -184,7 +186,7 @@ const YieldChart = () => {
                   fill: '#000000',
                   fontSize: 12,
                   fontWeight: 900,
-                  offset: 10,
+                  offset: 5,
                 }}
               />
               <Tooltip
