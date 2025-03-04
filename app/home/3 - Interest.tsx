@@ -58,7 +58,7 @@ export default function Interest() {
 const YieldChart = () => {
   const [chartData, setChartData] = useState<{ date: number; value: number }[]>([]);
   const [avgApy, setAvgApy] = useState<number>(0);
-  const [timeframe, setTimeframe] = useState<'1W' | '1M' | '6M' | '1Y'>('1Y');
+  const [timeframe, setTimeframe] = useState<'1W' | '1M' | '6M' | '1Y'>('1M');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
