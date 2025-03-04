@@ -13,6 +13,17 @@ import {
 } from 'recharts';
 
 export default function Interest() {
+  return (
+    <div className="flex h-[100vh] flex-col justify-center md:flex-row md:items-center md:px-8">
+      <Wording />
+      <div className="mt-8 w-full md:mt-0 md:flex-[0.8]">
+        <YieldChart />
+      </div>
+    </div>
+  );
+}
+
+const Wording = () => {
   const { apy } = useStore();
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -33,29 +44,52 @@ export default function Interest() {
   }, [apy, animatedValue, isInView]);
 
   const formattedValue = useTransform(animatedValue, (value) => value.toFixed(2) + '%');
-
   return (
-    <div
-      className="flex flex-col items-start justify-between md:h-[50vh] md:flex-row md:items-center"
-      ref={ref}>
-      <div className="flex-col items-start justify-center pl-4 md:pl-0">
-        <h1 className="text-3xl font-black md:text-7xl">Un taux d&apos;intérêt de </h1>
-        <h1 className=" text-3xl font-black md:mt-4 md:text-7xl">
-          <span className="rounded-xl bg-black px-4 py-1 text-white">
+    <div className="flex-col pl-4 md:flex-1 md:pl-0" ref={ref}>
+      {/* TITLE */}
+      <div className="mb-4 md:mb-20">
+        <h1 className="text-3xl font-extrabold md:text-7xl">
+          An interest rate of
+          {/* Un taux d&apos;intérêt de{' '} */}
+        </h1>
+        <h1 className=" text-3xl font-extrabold md:mt-2 md:text-7xl">
+          <span className="rounded-xl bg-black px-[8px] text-white">
             <motion.span>{formattedValue}</motion.span>
           </span>{' '}
-          par an.
+          per year.
+          {/* par an. */}
         </h1>
-        <p className="mt-2 text-lg font-bold text-gray-400 md:mt-8 md:text-2xl">
-          Un rendement plus qu&apos;avantageux.
-        </p>
       </div>
-      <div className="mt-8 w-full md:mt-0 md:w-[45%]">
-        <YieldChart />
+      {/* TEXT */}
+      <div className="flex flex-col gap-2">
+        <p className="text-lg font-black  md:text-2xl">
+          Earn interest on your cash, with no limits,
+          <span className="text-black/20">
+            {' '}
+            withdraw
+            <br className="hidden md:block" /> whenever you want.
+          </span>
+        </p>
+        <p className="text-lg font-black md:text-2xl">
+          Paid out daily,
+          <span className="text-black/20">
+            {' '}
+            earnings are automatically added
+            <br className="hidden md:block" /> and compounded to generate more interest.
+          </span>
+        </p>
+        <p className="text-lg font-black md:text-2xl">
+          No fees,
+          <span className="text-black/20">
+            {' '}
+            we only earn from the interest
+            <br className="hidden md:block" /> our clients generate.
+          </span>
+        </p>
       </div>
     </div>
   );
-}
+};
 
 const YieldChart = () => {
   const [chartData, setChartData] = useState<{ date: number; value: number }[]>([]);

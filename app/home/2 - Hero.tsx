@@ -21,8 +21,9 @@ export default function Hero() {
         Your browser does not support the video tag.
       </video>
 
-      <h1 className="absolute bottom-10 left-4 right-0 text-start text-3xl font-black md:bottom-16 md:left-24 md:text-7xl">
-        REVEILLEZ L&apos;EPARGNE <br /> QUI DORT DANS VOS COMPTES
+      <h1 className="absolute bottom-10 left-4 right-0 text-start text-3xl font-black md:bottom-8 md:left-8 md:text-6xl">
+        WAKE UP THE SAVINGS <br /> SLEEPING IN YOUR ACCOUNTS
+        {/* REVEILLEZ L&apos;EPARGNE <br /> QUI DORT DANS VOS COMPTES */}
       </h1>
     </div>
   );
