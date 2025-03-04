@@ -35,17 +35,17 @@ export default function Interest() {
   const formattedValue = useTransform(animatedValue, (value) => value.toFixed(2) + '%');
 
   return (
-    <div className="flex h-[75vh]" ref={ref}>
-      <div className="flex w-[55%] flex-col items-start justify-center gap-4 pl-20">
-        <h1 className="text-6xl font-black">Un taux d&apos;intérêt</h1>
+    <div className="flex h-[75vh] items-center justify-around" ref={ref}>
+      <div className="flex-col items-start justify-center gap-4">
+        <h1 className="text-6xl font-black">Un taux d&apos;intérêt de </h1>
         <h1 className="text-6xl font-black">
-          de{' '}
           <span className="rounded-xl bg-black px-4 py-1 text-white">
             <motion.span>{formattedValue}</motion.span>
-          </span>
+          </span>{' '}
+          par an
         </h1>
         <p className="mt-2 text-2xl font-bold text-gray-400">
-          Gagnez un rendement avantageux tout en epargnant.
+          Un rendement plus qu&apos;avantageux.
         </p>
       </div>
       <div className="w-[45%]">
@@ -101,28 +101,6 @@ const YieldChart = () => {
 
   const timeframes = ['1W', '1M', '6M', '1Y'] as const;
 
-  if (isLoading) {
-    return (
-      <div className="flex h-full w-full flex-col items-start justify-center pr-20">
-        <div className="mb-4 flex gap-8">
-          {timeframes.map((tf) => (
-            <button
-              key={tf}
-              disabled
-              className={`text-sm font-black transition-colors ${
-                timeframe === tf ? 'text-black' : 'text-gray-400'
-              }`}>
-              {tf}
-            </button>
-          ))}
-        </div>
-        <div className="flex h-[500px] w-full items-center justify-center">
-          <div className="h-6 w-6 animate-spin rounded-full border-2 border-black border-t-transparent" />
-        </div>
-      </div>
-    );
-  }
-
   if (error || chartData.length === 0) {
     return (
       <div className="flex h-full w-full flex-col items-start justify-center pr-20">
@@ -147,7 +125,7 @@ const YieldChart = () => {
 
   return (
     <div className="flex h-full w-full flex-col items-start justify-center">
-      <div className="mb-4 flex w-full justify-start gap-8 pr-24">
+      <div className="mb-4 flex w-full justify-end gap-8 pr-24">
         {timeframes.map((tf) => (
           <button
             key={tf}
@@ -160,72 +138,79 @@ const YieldChart = () => {
         ))}
       </div>
       <div className="relative w-full">
-        <ResponsiveContainer width="100%" height={500}>
-          <LineChart data={chartData} margin={{ top: 20, right: 80, left: 20, bottom: 20 }}>
-            <XAxis
-              dataKey="date"
-              tickFormatter={(timestamp) => {
-                const date = new Date(timestamp);
-                const month = date.toLocaleString('default', { month: 'short' });
-                const day = date.getDate();
-                return `${day} ${month}`;
-              }}
-              stroke="#000000"
-              strokeWidth={2}
-              tick={{ fontSize: 12, fontWeight: 900 }}
-              tickLine={false}
-              axisLine={{ strokeWidth: 2 }}
-              interval="preserveStartEnd"
-              minTickGap={50}
-            />
-            <YAxis
-              orientation="left"
-              tickFormatter={(value) => `${value}%`}
-              stroke="#000000"
-              strokeWidth={2}
-              tick={{ fontSize: 12, fontWeight: 900 }}
-              tickLine={false}
-              tickCount={5}
-              width={50}
-              axisLine={{ strokeWidth: 2 }}
-            />
-            <ReferenceLine
-              y={avgApy}
-              stroke="#000000"
-              strokeDasharray="3 3"
-              strokeWidth={2}
-              label={{
-                position: 'right',
-                value: `${avgApy.toFixed(2)}%`,
-                fill: '#000000',
-                fontSize: 12,
-                fontWeight: 900,
-                offset: 10,
-              }}
-            />
-            <Tooltip
-              content={({ active, payload }) => {
-                if (active && payload?.[0]?.payload) {
-                  const value = payload[0].value as number;
-                  return (
-                    <div className=" bg-white p-2 font-bold text-black">
-                      <p>{`${value.toFixed(2)}%`}</p>
-                    </div>
-                  );
-                }
-                return null;
-              }}
-            />
-            <Line
-              type="monotone"
-              dataKey="value"
-              stroke="#000000"
-              strokeWidth={4}
-              dot={false}
-              activeDot={{ r: 6, fill: '#000000' }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        {isLoading && (
+          <div className="absolute inset-0 flex h-[500px] items-center justify-center bg-white">
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-black border-t-transparent" />
+          </div>
+        )}
+        <div className={isLoading ? 'invisible' : ''}>
+          <ResponsiveContainer width="100%" height={500}>
+            <LineChart data={chartData} margin={{ top: 20, right: 80, left: 20, bottom: 20 }}>
+              <XAxis
+                dataKey="date"
+                tickFormatter={(timestamp) => {
+                  const date = new Date(timestamp);
+                  const month = date.toLocaleString('default', { month: 'short' });
+                  const day = date.getDate();
+                  return `${day} ${month}`;
+                }}
+                stroke="#000000"
+                strokeWidth={2}
+                tick={{ fontSize: 12, fontWeight: 900 }}
+                tickLine={false}
+                axisLine={{ strokeWidth: 2 }}
+                interval="preserveStartEnd"
+                minTickGap={50}
+              />
+              <YAxis
+                orientation="left"
+                tickFormatter={(value) => `${value}%`}
+                stroke="#000000"
+                strokeWidth={2}
+                tick={{ fontSize: 12, fontWeight: 900 }}
+                tickLine={false}
+                tickCount={5}
+                width={50}
+                axisLine={{ strokeWidth: 2 }}
+              />
+              <ReferenceLine
+                y={avgApy}
+                stroke="#000000"
+                strokeDasharray="3 3"
+                strokeWidth={2}
+                label={{
+                  position: 'right',
+                  value: `${avgApy.toFixed(2)}%`,
+                  fill: '#000000',
+                  fontSize: 12,
+                  fontWeight: 900,
+                  offset: 10,
+                }}
+              />
+              <Tooltip
+                content={({ active, payload }) => {
+                  if (active && payload?.[0]?.payload) {
+                    const value = payload[0].value as number;
+                    return (
+                      <div className=" bg-white p-2 font-bold text-black">
+                        <p>{`${value.toFixed(2)}%`}</p>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#000000"
+                strokeWidth={4}
+                dot={false}
+                activeDot={{ r: 6, fill: '#000000' }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );
