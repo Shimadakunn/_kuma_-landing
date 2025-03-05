@@ -14,7 +14,7 @@ import {
 
 export default function Interest() {
   return (
-    <div className="flex h-[100vh] flex-col justify-center md:flex-row md:items-center md:px-8">
+    <div className="flex h-[80vh] flex-col justify-center md:flex-row md:items-center md:px-8">
       <Wording />
       <div className="mt-8 w-full md:mt-0 md:flex-[0.8]">
         <YieldChart />
@@ -47,12 +47,12 @@ const Wording = () => {
   return (
     <div className="flex-col pl-4 md:flex-1 md:pl-0" ref={ref}>
       {/* TITLE */}
-      <div className="mb-4 md:mb-20">
-        <h1 className="text-3xl font-extrabold md:text-7xl">
+      <div className="mb-4 md:mb-12">
+        <h1 className="text-3xl font-extrabold md:text-6xl">
           An interest rate of
           {/* Un taux d&apos;intérêt de{' '} */}
         </h1>
-        <h1 className=" text-3xl font-extrabold md:mt-2 md:text-7xl">
+        <h1 className=" text-3xl font-extrabold md:mt-2 md:text-6xl">
           <span className="rounded-xl bg-black px-[8px] text-white">
             <motion.span>{formattedValue}</motion.span>
           </span>{' '}
@@ -64,26 +64,20 @@ const Wording = () => {
       <div className="flex flex-col gap-2">
         <p className="text-lg font-black  md:text-2xl">
           Earn interest on your cash, with no limits,
-          <span className="text-black/20">
-            {' '}
-            withdraw
-            <br className="hidden md:block" /> whenever you want.
-          </span>
+          <span className="text-black/20"> withdraw whenever you want.</span>
         </p>
         <p className="text-lg font-black md:text-2xl">
           Paid out daily,
           <span className="text-black/20">
             {' '}
-            earnings are automatically added
-            <br className="hidden md:block" /> and compounded to generate more interest.
+            earnings are automatically added and compounded to generate more interest.
           </span>
         </p>
         <p className="text-lg font-black md:text-2xl">
           No fees,
           <span className="text-black/20">
             {' '}
-            we only earn from the interest
-            <br className="hidden md:block" /> our clients generate.
+            we only earn from the interest our clients generate.
           </span>
         </p>
       </div>
@@ -161,17 +155,21 @@ const YieldChart = () => {
 
   return (
     <div className=" flex h-full w-full flex-col items-start justify-center">
-      <div className="flex w-full justify-end gap-8 pr-12 md:pr-24">
-        {timeframes.map((tf) => (
-          <button
-            key={tf}
-            onClick={() => setTimeframe(tf)}
-            className={`text-sm font-black transition-colors ${
-              timeframe === tf ? 'text-black' : 'text-gray-400'
-            }`}>
-            {tf}
-          </button>
-        ))}
+      <div className="md:pr0 flex w-full justify-between gap-8 px-4">
+        <h1 className="font-black">Interest evolution</h1>
+
+        <div className="flex gap-8">
+          {timeframes.map((tf) => (
+            <button
+              key={tf}
+              onClick={() => setTimeframe(tf)}
+              className={`text-sm font-black transition-colors ${
+                timeframe === tf ? 'text-black' : 'text-gray-400'
+              }`}>
+              {tf}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="relative w-full">
         {isLoading && (

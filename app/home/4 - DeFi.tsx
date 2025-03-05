@@ -1,21 +1,45 @@
 export default function DeFi() {
-  return  <div
-  className="md flex flex-col items-start justify-between md:h-[50vh] md:flex-row md:items-center md:px-8">
-  <div className="w-full flex-col items-start justify-center pl-4 md:flex-1 md:pl-0">
-    <h1 className="text-3xl font-black md:text-7xl">Un taux d&apos;intérêt de </h1>
-        <h1 className=" text-3xl font-black md:mt-4 md:text-7xl">
-          <span className="rounded-xl bg-black px-4 py-1 text-white">
-            <span>100%</span>
-          </span>{' '}
-          par an.
-        </h1>
-    <p className="mt-2 text-lg font-bold text-gray-400 md:mt-8 md:text-2xl">
-      Un rendement plus qu&apos;avantageux.
-    </p>
-      </div>
-      <div className="mt-8 w-full md:mt-0 md:flex-[0.8]">
-        <Image src="/defi.png" alt="defi" width={500} height={500} />
-      </div>
+  return (
+    <div className="flex h-[80vh] flex-col justify-center md:flex-row md:items-center md:px-8">
+      <Bubble />
+      <Wording />
     </div>
   );
 }
+
+const Wording = () => {
+  return (
+    <div className="flex-1">
+      {/* TITLE */}
+      <h1 className="text-3xl font-extrabold md:mb-12 md:text-6xl">
+        Finance,
+        <br /> without intermediaries.
+      </h1>
+      {/* TEXT */}
+      <div className="flex flex-col gap-2">
+        <p className="text-lg font-black  md:text-2xl">
+          Blockchain-based,
+          <span className="text-black/20">
+            {' '}
+            cutting out intermediaries to ensure optimal returns.
+          </span>
+        </p>
+        <p className="text-lg font-black md:text-2xl">
+          $28 billion dollars under management
+          <span className="text-black/20">
+            {' '}
+            by the protocol, zero hacks since its creation five years ago.
+          </span>
+        </p>
+        <p className="text-lg font-black md:text-2xl">
+          15 security audits
+          <span className="text-black/20"> successfully passed, ensuring the safety of funds.</span>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const Bubble = () => {
+  return <div className="flex-[1]">hello</div>;
+};
