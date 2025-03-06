@@ -1,11 +1,24 @@
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
+  const [showBlur, setShowBlur] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBlur(window.scrollY > window.innerHeight * 1);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="fixed left-0 right-0 top-0 z-10 flex items-start justify-between px-4 py-4 md:px-8 md:py-4">
-      <div className="absolute left-0 right-0 top-0 -z-10 h-[8vh] bg-white/60 backdrop-blur-xl md:h-[10vh]"></div>
+      <div
+        className={`absolute left-0 right-0 top-0 -z-10 h-[8vh] bg-white/60 backdrop-blur-xl transition-opacity duration-300 md:h-[8vh] ${showBlur ? 'opacity-100' : 'opacity-0'}`}></div>
       <div className="flex items-center gap-1">
         <h1 className="text-4xl font-black tracking-tighter md:text-5xl">Kuma</h1>
         <Image

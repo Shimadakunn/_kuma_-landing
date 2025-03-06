@@ -1,7 +1,7 @@
 'use client';
 import { useStore } from '@/lib/store';
 import { useEffect } from 'react';
-import { DeFi, Footer, Header, Hero, Interest } from './home';
+import { DeFi, FAQ, Footer, Header, Hero, Interest } from './home';
 
 export default function Home() {
   const { fetchApy, fetchApyHistory } = useStore();
@@ -15,6 +15,7 @@ export default function Home() {
       <Hero />
       <Interest />
       <DeFi />
+      <FAQ />
       {/* <Sections />
       <YieldSimulation /> */}
       <Footer />

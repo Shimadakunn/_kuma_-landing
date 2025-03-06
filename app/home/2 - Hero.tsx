@@ -16,12 +16,12 @@ export default function Hero() {
         muted
         loop
         playsInline
-        className="absolute inset-0 h-full w-full  object-cover">
-        <source src="/bg.webm" type="video/webm" />
+        className="absolute inset-0 h-full w-full object-cover">
+        <source src="/lines.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
-      <h1 className="absolute bottom-10 left-4 right-0 text-start text-3xl font-black md:bottom-8 md:left-8 md:text-6xl">
+      <h1 className="absolute bottom-10 left-4 right-0 rounded-2xl  text-start text-3xl font-black md:bottom-8 md:left-8 md:text-6xl">
         WAKE UP THE SAVINGS <br /> SLEEPING IN YOUR ACCOUNTS
         {/* REVEILLEZ L&apos;EPARGNE <br /> QUI DORT DANS VOS COMPTES */}
       </h1>

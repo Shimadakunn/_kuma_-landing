@@ -1,3 +1,8 @@
+interface RateHistoryEntry {
+  liquidityRate_avg: number;
+  utilizationRate_avg: number;
+}
+
 export const getApy = async () => {
   const timestamp7Days = Math.floor(Date.now() / 1000) - 365 * 86400;
   const apiUrl = `https://aave-api-v2.aave.com/data/rates-history?reserveId=0x833589fcd6edb6e08f4c7c32d4f71b54bda029130xe20fCBdBfFC4Dd138cE8b2E6FBb6CB49777ad64D8453&from=${timestamp7Days}&resolutionInHours=1000`;
@@ -11,7 +16,9 @@ export const getApy = async () => {
 
   // Calculate last week's average (excluding the newest rate)
   const lastWeekAvg =
-    data.slice(0, -1).reduce((sum: number, entry: any) => sum + entry.liquidityRate_avg, 0) /
+    data
+      .slice(0, -1)
+      .reduce((sum: number, entry: RateHistoryEntry) => sum + entry.liquidityRate_avg, 0) /
     (data.length - 1);
 
   // Calculate variation (difference between newest and last week's average)
@@ -50,8 +57,9 @@ export const getApyHistory = async (timeframe: '1W' | '1M' | '6M' | '1Y') => {
 
   // Calculate average and sort rates from oldest to newest
   const avgRate =
-    data.reduce((sum: number, entry: any) => sum + entry.liquidityRate_avg, 0) / data.length;
-  const rateHistory = data.map((entry: any) => entry.liquidityRate_avg);
+    data.reduce((sum: number, entry: RateHistoryEntry) => sum + entry.liquidityRate_avg, 0) /
+    data.length;
+  const rateHistory = data.map((entry: RateHistoryEntry) => entry.liquidityRate_avg);
 
   console.log('getApyHistory', {
     avgRate,

@@ -14,11 +14,12 @@ import {
 
 export default function Interest() {
   return (
-    <div className="flex h-[80vh] flex-col justify-center md:flex-row md:items-center md:px-8">
+    <div className="flex h-screen flex-col justify-center gap-10 px-4 md:flex-row md:items-center md:gap-0 md:px-8">
       <Wording />
-      <div className="mt-8 w-full md:mt-0 md:flex-[0.8]">
+      <div className="w-full rounded-3xl bg-black px-2 pt-4 md:flex-[0.8] md:p-8">
         <YieldChart />
       </div>
+      <MobileWording />
     </div>
   );
 }
@@ -45,14 +46,16 @@ const Wording = () => {
 
   const formattedValue = useTransform(animatedValue, (value) => value.toFixed(2) + '%');
   return (
-    <div className="flex-col pl-4 md:flex-1 md:pl-0" ref={ref}>
+    <div
+      className="flex flex-col items-start justify-around pl-2 md:h-full md:flex-1 md:pl-12"
+      ref={ref}>
       {/* TITLE */}
-      <div className="mb-4 md:mb-12">
-        <h1 className="text-3xl font-extrabold md:text-6xl">
+      <div className="">
+        <h1 className="text-4xl font-extrabold md:text-6xl">
           An interest rate of
           {/* Un taux d&apos;intérêt de{' '} */}
         </h1>
-        <h1 className=" text-3xl font-extrabold md:mt-2 md:text-6xl">
+        <h1 className=" text-4xl font-extrabold md:mt-2 md:text-6xl">
           <span className="rounded-xl bg-black px-[8px] text-white">
             <motion.span>{formattedValue}</motion.span>
           </span>{' '}
@@ -61,7 +64,7 @@ const Wording = () => {
         </h1>
       </div>
       {/* TEXT */}
-      <div className="flex flex-col gap-2">
+      <div className="hidden max-w-[700px] flex-col gap-2 md:flex">
         <p className="text-lg font-black  md:text-2xl">
           Earn interest on your cash, with no limits,
           <span className="text-black/20"> withdraw whenever you want.</span>
@@ -88,9 +91,20 @@ const Wording = () => {
 const YieldChart = () => {
   const [chartData, setChartData] = useState<{ date: number; value: number }[]>([]);
   const [avgApy, setAvgApy] = useState<number>(0);
-  const [timeframe, setTimeframe] = useState<'1W' | '1M' | '6M' | '1Y'>('1M');
+  const [timeframe, setTimeframe] = useState<'1W' | '1M' | '6M' | '1Y'>('6M');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [chartHeight, setChartHeight] = useState(300);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setChartHeight(window.innerWidth >= 768 ? 500 : 250);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const fetchData = async (selectedTimeframe: typeof timeframe) => {
     setIsLoading(true);
@@ -154,17 +168,17 @@ const YieldChart = () => {
   }
 
   return (
-    <div className=" flex h-full w-full flex-col items-start justify-center">
+    <div className=" flex h-full w-full flex-col items-start justify-center text-white">
       <div className="md:pr0 flex w-full justify-between gap-8 px-4">
         <h1 className="font-black">Interest evolution</h1>
 
-        <div className="flex gap-8">
+        <div className="flex gap-4 md:gap-8">
           {timeframes.map((tf) => (
             <button
               key={tf}
               onClick={() => setTimeframe(tf)}
               className={`text-sm font-black transition-colors ${
-                timeframe === tf ? 'text-black' : 'text-gray-400'
+                timeframe === tf ? 'text-white' : 'text-gray-400'
               }`}>
               {tf}
             </button>
@@ -173,13 +187,13 @@ const YieldChart = () => {
       </div>
       <div className="relative w-full">
         {isLoading && (
-          <div className="absolute inset-0 flex h-[200px] items-center justify-center bg-white">
-            <div className="h-6 w-6 animate-spin rounded-full border-2 border-black border-t-transparent" />
+          <div className={`absolute inset-0 flex h-[${chartHeight}px] items-center justify-center`}>
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-white border-t-transparent" />
           </div>
         )}
         <div className={isLoading ? 'invisible' : ''}>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={chartData} margin={{ top: 20, right: 50, left: 20, bottom: 20 }}>
+          <ResponsiveContainer width="100%" height={chartHeight}>
+            <LineChart data={chartData} margin={{ top: 20, right: 50, left: 20, bottom: 10 }}>
               <XAxis
                 dataKey="date"
                 tickFormatter={(timestamp) => {
@@ -188,7 +202,7 @@ const YieldChart = () => {
                   const day = date.getDate();
                   return `${day} ${month}`;
                 }}
-                stroke="#000000"
+                stroke="#ffffff"
                 strokeWidth={2}
                 tick={{ fontSize: 12, fontWeight: 900 }}
                 tickLine={false}
@@ -199,7 +213,7 @@ const YieldChart = () => {
               <YAxis
                 orientation="left"
                 tickFormatter={(value) => `${value}%`}
-                stroke="#000000"
+                stroke="#ffffff"
                 strokeWidth={2}
                 tick={{ fontSize: 12, fontWeight: 900 }}
                 tickLine={false}
@@ -209,13 +223,13 @@ const YieldChart = () => {
               />
               <ReferenceLine
                 y={avgApy}
-                stroke="#000000"
+                stroke="#ffffff"
                 strokeDasharray="3 3"
                 strokeWidth={2}
                 label={{
                   position: 'right',
                   value: `${avgApy.toFixed(2)}%`,
-                  fill: '#000000',
+                  fill: '#ffffff',
                   fontSize: 12,
                   fontWeight: 900,
                   offset: 5,
@@ -226,7 +240,7 @@ const YieldChart = () => {
                   if (active && payload?.[0]?.payload) {
                     const value = payload[0].value as number;
                     return (
-                      <div className=" bg-white p-2 font-bold text-black">
+                      <div className="rounded-lg bg-black p-2" style={{ borderRadius: '5px' }}>
                         <p>{`${value.toFixed(2)}%`}</p>
                       </div>
                     );
@@ -237,15 +251,37 @@ const YieldChart = () => {
               <Line
                 type="monotone"
                 dataKey="value"
-                stroke="#000000"
+                stroke="#ffffff"
                 strokeWidth={4}
                 dot={false}
-                activeDot={{ r: 6, fill: '#000000' }}
+                activeDot={{ r: 6, fill: '#ffffff' }}
               />
             </LineChart>
           </ResponsiveContainer>
         </div>
       </div>
+    </div>
+  );
+};
+
+const MobileWording = () => {
+  return (
+    <div className="flex flex-col gap-2 px-2 md:hidden">
+      <p className="text-lg font-black  md:text-2xl">
+        Earn interest on your cash, with no limits,
+        <span className="text-black/20"> withdraw whenever you want.</span>
+      </p>
+      <p className="text-lg font-black md:text-2xl">
+        Paid out daily,
+        <span className="text-black/20">
+          {' '}
+          earnings are automatically added and compounded to generate more interest.
+        </span>
+      </p>
+      <p className="text-lg font-black md:text-2xl">
+        No fees,
+        <span className="text-black/20"> we only earn from the interest our clients generate.</span>
+      </p>
     </div>
   );
 };
