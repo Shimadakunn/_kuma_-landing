@@ -1,6 +1,6 @@
 export default function DeFi() {
   return (
-    <div className="flex h-screen flex-col-reverse justify-center gap-10 px-4 md:flex-row md:items-center md:gap-8">
+    <div className="flex h-[90vh] flex-col-reverse justify-center gap-10 bg-black px-4 text-white md:flex-row md:items-center md:gap-8">
       <MobileWording />
       <Bubble />
       <Wording />
@@ -10,7 +10,7 @@ export default function DeFi() {
 
 const Wording = () => {
   return (
-    <div className="flex flex-col items-start justify-around border md:h-full md:flex-1 md:pl-0">
+    <div className="flex flex-col items-start justify-around md:h-full md:flex-1 md:pl-0">
       {/* TITLE */}
       <h1 className="text-4xl font-extrabold md:mb-12 md:text-6xl">
         Finance,
@@ -20,7 +20,7 @@ const Wording = () => {
       <div className="hidden max-w-[700px] flex-col gap-2 md:flex">
         <p className="text-lg font-black  md:text-2xl">
           Blockchain-based,
-          <span className="text-black/20">
+          <span className="text-white/40">
             {' '}
             cutting out intermediaries to ensure optimal returns.
           </span>
@@ -57,10 +57,7 @@ const MobileWording = () => {
     <div className="flex flex-col gap-2 px-2 md:hidden">
       <p className="text-lg font-black  md:text-2xl">
         Blockchain-based,
-        <span className="text-black/20">
-          {' '}
-          cutting out intermediaries to ensure optimal returns.
-        </span>
+        <span className=""> cutting out intermediaries to ensure optimal returns.</span>
       </p>
       <p className="text-lg font-black md:text-2xl">
         $28 billion dollars under management

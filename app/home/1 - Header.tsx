@@ -5,10 +5,33 @@ import { useEffect, useState } from 'react';
 
 export default function Header() {
   const [showBlur, setShowBlur] = useState(false);
+  const [textWhite, setTextWhite] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowBlur(window.scrollY > window.innerHeight * 1);
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+
+      if (scrollY < viewportHeight) {
+        setShowBlur(false);
+        setTextWhite(false);
+      }
+      if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.75) {
+        setShowBlur(true);
+      }
+      if (scrollY >= viewportHeight * 1.75 && scrollY < viewportHeight * 2.8) {
+        setShowBlur(false);
+      }
+      if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.88) {
+        setTextWhite(false);
+      }
+      if (scrollY >= viewportHeight * 1.88 && scrollY < viewportHeight * 2.8) {
+        setTextWhite(true);
+      }
+      if (scrollY >= viewportHeight * 2.8) {
+        setShowBlur(false);
+        setTextWhite(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -20,7 +43,10 @@ export default function Header() {
       <div
         className={`absolute left-0 right-0 top-0 -z-10 h-[8vh] bg-white/60 backdrop-blur-xl transition-opacity duration-300 md:h-[8vh] ${showBlur ? 'opacity-100' : 'opacity-0'}`}></div>
       <div className="flex items-center gap-1">
-        <h1 className="text-4xl font-black tracking-tighter md:text-5xl">Kuma</h1>
+        <h1
+          className={`text-4xl font-black tracking-tighter md:text-5xl ${textWhite ? 'text-white' : 'text-black'}`}>
+          Kuma
+        </h1>
         <Image
           src="/logo.png"
           alt="kuma"
