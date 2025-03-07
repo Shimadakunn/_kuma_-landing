@@ -1,6 +1,6 @@
 export default function DeFi() {
   return (
-    <div className="flex h-screen flex-col-reverse justify-center gap-10 px-4 md:flex-row md:items-center md:px-8">
+    <div className="flex h-screen flex-col-reverse justify-center gap-10 px-4 md:flex-row md:items-center md:gap-8">
       <MobileWording />
       <Bubble />
       <Wording />
@@ -10,7 +10,7 @@ export default function DeFi() {
 
 const Wording = () => {
   return (
-    <div className="flex flex-col items-start justify-around md:h-full md:flex-1 md:pl-0">
+    <div className="flex flex-col items-start justify-around border md:h-full md:flex-1 md:pl-0">
       {/* TITLE */}
       <h1 className="text-4xl font-extrabold md:mb-12 md:text-6xl">
         Finance,
