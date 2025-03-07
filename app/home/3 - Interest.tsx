@@ -95,10 +95,12 @@ const YieldChart = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [chartHeight, setChartHeight] = useState(300);
+  const [chartLineWidth, setChartLineWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
       setChartHeight(window.innerWidth >= 768 ? 500 : 250);
+      setChartLineWidth(window.innerWidth >= 768 ? 4 : 3);
     };
 
     handleResize();
@@ -145,28 +147,6 @@ const YieldChart = () => {
 
   const timeframes = ['1W', '1M', '6M', '1Y'] as const;
 
-  if (error || chartData.length === 0) {
-    return (
-      <div className="flex h-full w-full flex-col items-start justify-center pr-20">
-        <div className="mb-4 flex gap-8">
-          {timeframes.map((tf) => (
-            <button
-              key={tf}
-              onClick={() => setTimeframe(tf)}
-              className={`text-sm font-black transition-colors ${
-                timeframe === tf ? 'text-black' : 'text-gray-400'
-              }`}>
-              {tf}
-            </button>
-          ))}
-        </div>
-        <div className="flex h-[500px] w-full items-center justify-center">
-          <p className="text-gray-500">{error || 'No data available'}</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className=" flex h-full w-full flex-col items-start justify-center text-white">
       <div className="md:pr0 flex w-full justify-between gap-8 px-4">
@@ -186,7 +166,7 @@ const YieldChart = () => {
         </div>
       </div>
       <div className="relative w-full">
-        {isLoading && (
+        {(isLoading || chartData.length === 0 || error) && (
           <div className={`absolute inset-0 flex h-[${chartHeight}px] items-center justify-center`}>
             <div className="h-6 w-6 animate-spin rounded-full border-2 border-white border-t-transparent" />
           </div>
@@ -252,7 +232,7 @@ const YieldChart = () => {
                 type="monotone"
                 dataKey="value"
                 stroke="#ffffff"
-                strokeWidth={4}
+                strokeWidth={chartLineWidth}
                 dot={false}
                 activeDot={{ r: 6, fill: '#ffffff' }}
               />

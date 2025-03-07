@@ -7,7 +7,10 @@ export default function Hero() {
         muted
         playsInline
         className="absolute inset-0 z-10 h-full w-full object-cover">
-        <source src="/phone.webm" type="video/webm" />
+        <source
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741337594/phone_zvsxvv.webm"
+          type="video/webm"
+        />
         Your browser does not support the video tag.
       </video>
       <video
@@ -17,7 +20,10 @@ export default function Hero() {
         loop
         playsInline
         className="absolute inset-0 h-full w-full object-cover">
-        <source src="/lines.webm" type="video/webm" />
+        <source
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741337678/lines_gfnion.webm"
+          type="video/webm"
+        />
         Your browser does not support the video tag.
       </video>
 
