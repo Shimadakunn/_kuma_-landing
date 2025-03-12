@@ -45,7 +45,10 @@ const Bubble = () => {
   return (
     <div className="relative flex items-center justify-center md:flex-1">
       <video autoPlay muted loop playsInline className="">
-        <source src="/blobs.webm" type="video/webm" />
+        <source
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741821180/blobs_btmvqq.webm"
+          type="video/webm"
+        />
         Your browser does not support the video tag.
       </video>
     </div>

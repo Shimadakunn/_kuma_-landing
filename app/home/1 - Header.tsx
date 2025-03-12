@@ -50,10 +50,10 @@ export default function Header() {
           Kuma
         </h1>
         <Image
-          src={`/logo${textWhite ? '_white' : ''}.png`}
+          src={`${textWhite ? 'https://res.cloudinary.com/dvgc2tpte/image/upload/v1741820845/logo_white_lyc60e.png' : 'https://res.cloudinary.com/dvgc2tpte/image/upload/v1741820839/logo_uznrm0.png'}`}
           alt="kuma"
-          width={30}
-          height={30}
+          width={500}
+          height={500}
           className="object-contain md:h-[40px] md:w-[40px]"
         />
       </div>

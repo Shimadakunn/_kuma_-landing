@@ -8,7 +8,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 z-10 h-full w-full object-cover">
         <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741337594/phone_zvsxvv.webm"
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741820919/phone_gv8kop.webm"
           type="video/webm"
         />
         Your browser does not support the video tag.
@@ -21,7 +21,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover">
         <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741337678/lines_gfnion.webm"
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741820879/lines_cwmh7s.webm"
           type="video/webm"
         />
         Your browser does not support the video tag.
