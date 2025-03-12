@@ -14,7 +14,7 @@ import {
 
 export default function Interest() {
   return (
-    <div className="flex h-[90vh] flex-col justify-center gap-10 px-4 md:flex-row md:items-center md:gap-0 md:px-8">
+    <div className="flex h-[95vh] flex-col justify-center gap-10 px-4 md:flex-row md:items-center md:gap-0 md:px-8">
       <Wording />
       <div className="w-full rounded-3xl bg-black px-2 pt-4 md:flex-[0.8] md:p-8">
         <YieldChart />

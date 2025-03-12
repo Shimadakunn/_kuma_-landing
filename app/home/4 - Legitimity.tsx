@@ -1,6 +1,6 @@
 export default function DeFi() {
   return (
-    <div className="flex h-[90vh] flex-col-reverse justify-center gap-10 bg-black px-4 text-white md:flex-row md:items-center md:gap-8">
+    <div className="flex h-[95vh] flex-col-reverse justify-center gap-10 bg-black px-4 text-white md:flex-row md:items-center md:gap-8">
       <MobileWording />
       <Bubble />
       <Wording />
@@ -27,14 +27,14 @@ const Wording = () => {
         </p>
         <p className="text-lg font-black md:text-2xl">
           $28 billion dollars under management
-          <span className="text-black/20">
+          <span className="text-white/40">
             {' '}
             by the protocol, zero hacks since its creation five years ago.
           </span>
         </p>
         <p className="text-lg font-black md:text-2xl">
           15 security audits
-          <span className="text-black/20"> successfully passed, ensuring the safety of funds.</span>
+          <span className="text-white/40"> successfully passed, ensuring the safety of funds.</span>
         </p>
       </div>
     </div>
@@ -57,18 +57,21 @@ const MobileWording = () => {
     <div className="flex flex-col gap-2 px-2 md:hidden">
       <p className="text-lg font-black  md:text-2xl">
         Blockchain-based,
-        <span className=""> cutting out intermediaries to ensure optimal returns.</span>
+        <span className="text-white/40">
+          {' '}
+          cutting out intermediaries to ensure optimal returns.
+        </span>
       </p>
       <p className="text-lg font-black md:text-2xl">
         $28 billion dollars under management
-        <span className="text-black/20">
+        <span className="text-white/40">
           {' '}
           by the protocol, zero hacks since its creation five years ago.
         </span>
       </p>
       <p className="text-lg font-black md:text-2xl">
         15 security audits
-        <span className="text-black/20"> successfully passed, ensuring the safety of funds.</span>
+        <span className="text-white/40"> successfully passed, ensuring the safety of funds.</span>
       </p>
     </div>
   );

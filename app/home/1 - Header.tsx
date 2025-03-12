@@ -16,20 +16,22 @@ export default function Header() {
         setShowBlur(false);
         setTextWhite(false);
       }
-      if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.75) {
+      if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.8) {
         setShowBlur(true);
       }
-      if (scrollY >= viewportHeight * 1.75 && scrollY < viewportHeight * 2.8) {
+      if (scrollY >= viewportHeight * 1.8 && scrollY < viewportHeight * 2.85) {
         setShowBlur(false);
       }
-      if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.88) {
+      if (scrollY >= viewportHeight * 2.85) {
+        setShowBlur(false);
+      }
+      if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.9) {
         setTextWhite(false);
       }
-      if (scrollY >= viewportHeight * 1.88 && scrollY < viewportHeight * 2.8) {
+      if (scrollY >= viewportHeight * 1.9 && scrollY < viewportHeight * 2.85) {
         setTextWhite(true);
       }
-      if (scrollY >= viewportHeight * 2.8) {
-        setShowBlur(false);
+      if (scrollY >= viewportHeight * 2.85) {
         setTextWhite(false);
       }
     };
@@ -48,7 +50,7 @@ export default function Header() {
           Kuma
         </h1>
         <Image
-          src="/logo.png"
+          src={`/logo${textWhite ? '_white' : ''}.png`}
           alt="kuma"
           width={30}
           height={30}
