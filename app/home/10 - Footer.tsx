@@ -1,31 +1,21 @@
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
     <div className="relative space-y-6 bg-black p-6 text-white">
       {/* Background */}
-      {/* <video
-        width="100%"
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 -z-10 h-full w-full object-cover">
-        <source src="/footer.webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video> */}
       <div className="flex w-full flex-row items-center justify-between pr-10">
         <div className="flex flex-col items-start justify-start">
           <div className="flex items-center gap-1">
             <h1 className="text-4xl font-black tracking-tighter">Kuma</h1>
             <Image
-              src="/logo_white.png"
+              src="https://res.cloudinary.com/dvgc2tpte/image/upload/v1741820845/logo_white_lyc60e.png"
               alt="kuma"
-              width={33}
-              height={33}
-              className="object-contain"
+              width={50}
+              height={50}
+              className="h-[30px] w-[30px] object-contain"
             />
           </div>
           <h1 className="text-2xl font-extrabold">Faites beaucoup avec moins.</h1>

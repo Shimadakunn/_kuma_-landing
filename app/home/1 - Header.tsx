@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import WaitingList from '@/components/WaitingList/page';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -54,10 +55,10 @@ export default function Header() {
           alt="kuma"
           width={500}
           height={500}
-          className="object-contain md:h-[40px] md:w-[40px]"
+          className="h-[30px] w-[30px] object-contain md:h-[40px] md:w-[40px]"
         />
       </div>
-
+      <WaitingList />
       <div className="hidden flex-col items-start gap-1 rounded-xl bg-black p-2 md:flex">
         <p className="mx-auto text-center font-black tracking-[0.1em] text-white">Download App</p>
         <Image src="/qrcode.png" alt="kuma" width={150} height={150} className="object-contain" />

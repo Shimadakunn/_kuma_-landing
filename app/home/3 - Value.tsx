@@ -66,8 +66,8 @@ const Wording = () => {
       {/* TEXT */}
       <div className="hidden max-w-[700px] flex-col gap-2 md:flex">
         <p className="text-lg font-black  md:text-2xl">
-          Earn interest on your cash, with no limits,
-          <span className="text-black/20"> withdraw whenever you want.</span>
+          Earn interest on your cash, with no limits.
+          <span className="text-black/20"> Withdraw whenever you want.</span>
         </p>
         <p className="text-lg font-black md:text-2xl">
           Paid out daily,
