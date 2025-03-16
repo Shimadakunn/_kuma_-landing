@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Linkedin, Twitter } from 'lucide-react';
 import Image from 'next/image';
-
 export default function Footer() {
   return (
     <div className="relative space-y-6 bg-black px-6 pb-24 pt-12 text-white">
@@ -26,13 +25,24 @@ export default function Footer() {
           <ChevronRight size={40} strokeWidth={1.5} />
         </Button>
       </div>
-      <div className="flex w-full items-start justify-start">
+      <div className="flex w-full items-start justify-between pr-10">
         <h1 className=" text-xs font-medium text-white/40">
           @Kuma LTD - 2025
           <br />
           Bleap Sp. z o.o is a limited liability company incorporated in Poland under company number
           526782047,{' '}
         </h1>
+        <div className="flex flex-row items-center gap-2">
+          <div className="rounded-xl bg-white p-2">
+            <Linkedin size={20} className="text-black" fill="black" />
+          </div>
+          <div className="rounded-xl bg-white p-2">
+            <Twitter size={20} className="text-black" fill="black" />
+          </div>
+          <div className="rounded-xl bg-white p-2">
+            <Image src="/tiktok.svg" alt="Tiktok" width={20} height={20} className="text-black" />
+          </div>
+        </div>
       </div>
     </div>
   );
