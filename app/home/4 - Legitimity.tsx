@@ -1,3 +1,4 @@
+import InfiniteScroll from '@/components/ui/infinite-scroll';
 import { GradualSpacing } from '@/components/ui/text-anim-2';
 
 export default function DeFi() {
@@ -45,14 +46,14 @@ const Wording = () => {
 
 const Bubble = () => {
   return (
-    <div className="relative flex items-center justify-center md:flex-1">
-      <video autoPlay muted loop playsInline className="">
-        <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741821180/blobs_btmvqq.webm"
-          type="video/webm"
-        />
-        Your browser does not support the video tag.
-      </video>
+    <div className="relative h-[5vh] flex-1 md:h-[95vh] ">
+      <InfiniteScroll
+        isTilted={true}
+        tiltDirection="left"
+        autoplay={true}
+        autoplaySpeed={0.5}
+        autoplayDirection="up"
+      />
     </div>
   );
 };

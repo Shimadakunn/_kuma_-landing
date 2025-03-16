@@ -135,7 +135,7 @@ export default function InfiniteScroll({
         }}>
         {items.map((item, i) => (
           <div
-            className="flex items-center justify-between rounded-3xl border-2 border-black px-6"
+            className="flex items-center justify-between rounded-3xl border-2 border-white px-6"
             key={i}
             style={{
               height: `${itemMinHeight}px`,
@@ -147,7 +147,7 @@ export default function InfiniteScroll({
               </div>
               <div>
                 <p className="text-lg font-black md:text-3xl">REWARDS</p>
-                <p className="text-lg font-bold text-black/20 md:text-2xl">{item.timeLabel}</p>
+                <p className="text-lg font-bold text-white/20 md:text-2xl">{item.timeLabel}</p>
               </div>
             </div>
             <div className="text-lg font-black md:text-3xl">${item.amount}</div>
