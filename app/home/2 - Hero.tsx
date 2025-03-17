@@ -7,7 +7,7 @@ export default function Hero() {
         autoPlay
         muted
         playsInline
-        className="absolute left-1/2 top-1/2 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover">
+        className="absolute left-1/2 top-1/2 mt-8 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0">
         <source
           src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742250641/agency-form-date-picker-iphone-mockup_cachfg.mp4"
           type="video/mp4"
