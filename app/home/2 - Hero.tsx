@@ -4,14 +4,13 @@ export default function Hero() {
   return (
     <div className="relative flex h-[100vh]">
       <video
-        width="100%"
         autoPlay
         muted
         playsInline
-        className="absolute inset-0 z-10 mt-10 h-full w-full bg-transparent object-cover md:mt-0">
+        className="absolute left-1/2 top-1/2 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover">
         <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742226315/agency-form-date-picker-iphone-mockup_2_zxedsi.webm"
-          type="video/webm"
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742250641/agency-form-date-picker-iphone-mockup_cachfg.mp4"
+          type="video/mp4"
         />
         Your browser does not support the video tag.
       </video>
@@ -21,7 +20,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        className="absolute inset-0 h-full w-full bg-transparent object-cover">
+        className="absolute inset-0 -z-10 h-full w-full object-cover">
         <source
           src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741949000/lines_gndgxr.webm"
           type="video/webm"
