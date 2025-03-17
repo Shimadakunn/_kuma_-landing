@@ -121,7 +121,7 @@ export default function InfiniteScroll({
 
   return (
     <div
-      className="relative flex w-full items-center justify-center overflow-hidden overscroll-none"
+      className="relative flex h-[100vh] w-full items-center justify-center overflow-hidden overscroll-none"
       ref={wrapperRef}
       style={{ maxHeight }}>
       {/* Container */}

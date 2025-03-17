@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div className="relative space-y-6 bg-black px-6 pb-24 pt-12 text-white">
       {/* Background */}
-      <div className="flex w-full flex-row items-center justify-between pr-10">
+      <div className="flex w-full flex-col items-start justify-between gap-2 pr-10 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col items-start justify-start">
           <div className="flex items-center gap-1">
             <h1 className="text-4xl font-black tracking-tighter">Kuma</h1>
@@ -25,7 +25,7 @@ export default function Footer() {
           <ChevronRight size={40} strokeWidth={1.5} />
         </Button>
       </div>
-      <div className="flex w-full items-start justify-between pr-10">
+      <div className="flex flex-col-reverse items-start justify-between gap-2 md:flex-row md:pr-10">
         <h1 className=" text-xs font-medium text-white/40">
           @Kuma LTD - 2025
           <br />

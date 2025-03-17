@@ -40,14 +40,12 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      keyof HTMLMotionProps<'button'> | 'className' | 'children'
-    >,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof HTMLMotionProps<'button'>>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   noShadow?: boolean;
   animateBackground?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   children?: React.ReactNode;
 }

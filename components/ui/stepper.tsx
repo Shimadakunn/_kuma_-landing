@@ -4,7 +4,7 @@ import { Button } from './button';
 
 interface StepperProps {
   children: ReactNode;
-  initialStep?: number;
+  currentStep: number;
   onStepChange?: (step: number) => void;
   onFinalStepCompleted?: () => void;
   stepCircleContainerClassName?: string;
@@ -16,6 +16,7 @@ interface StepperProps {
   backButtonText?: string;
   nextButtonText?: string;
   disableStepIndicators?: boolean;
+  disableNextButton?: (step: number) => boolean;
   renderStepIndicator?: (props: StepIndicatorProps) => ReactNode;
 }
 
@@ -49,7 +50,7 @@ interface StepConnectorProps {
 
 export default function Stepper({
   children,
-  initialStep = 1,
+  currentStep = 1,
   onStepChange = () => {},
   onFinalStepCompleted = () => {},
   stepCircleContainerClassName = '',
@@ -61,10 +62,10 @@ export default function Stepper({
   backButtonText = 'Back',
   nextButtonText = 'Continue',
   disableStepIndicators = false,
+  disableNextButton,
   renderStepIndicator,
   ...rest
 }: StepperProps) {
-  const [currentStep, setCurrentStep] = useState(initialStep);
   const [direction, setDirection] = useState(0);
   const stepsArray = Children.toArray(children);
   const totalSteps = stepsArray.length;
@@ -72,7 +73,6 @@ export default function Stepper({
   const isLastStep = currentStep === totalSteps;
 
   const updateStep = (newStep: number) => {
-    setCurrentStep(newStep);
     if (newStep > totalSteps) onFinalStepCompleted();
     else onStepChange(newStep);
   };
@@ -153,8 +153,9 @@ export default function Stepper({
                 </button>
               )}
               <Button
-                className="h-10 bg-white px-4 py-0 text-lg text-black"
+                className=" h-10 bg-white px-4 py-0 text-base font-bold text-black"
                 onClick={isLastStep ? handleComplete : handleNext}
+                disabled={disableNextButton ? disableNextButton(currentStep) : false}
                 {...nextButtonProps}>
                 {isLastStep ? 'Complete' : nextButtonText}
               </Button>
@@ -219,7 +220,7 @@ function SlideTransition({ children, direction, onHeightReady }: SlideTransition
 
 const stepVariants = {
   enter: (dir: number) => ({
-    x: dir >= 0 ? '-100%' : '100%',
+    x: dir >= 0 ? '100%' : '-100%',
     opacity: 0,
   }),
   center: {
@@ -227,7 +228,7 @@ const stepVariants = {
     opacity: 1,
   },
   exit: (dir: number) => ({
-    x: dir >= 0 ? '50%' : '-50%',
+    x: dir >= 0 ? '-50%' : '50%',
     opacity: 0,
   }),
 };

@@ -2,7 +2,7 @@ import { BlurIn } from '@/components/ui/text-anim-3';
 
 export default function FAQ() {
   return (
-    <div className="flex h-[95vh] flex-col justify-center gap-10 border border-red-500 px-4 py-12 md:flex-row md:items-center md:gap-8 md:py-0">
+    <div className="flex h-[95vh] flex-col justify-center gap-2 px-4 py-12 md:flex-row md:items-center md:gap-8 md:py-0">
       <Wording />
       <YieldSimulation />
       <MobileWording />
@@ -46,9 +46,9 @@ const Wording = () => {
 const YieldSimulation = () => {
   return (
     <div className="relative flex items-center justify-center md:flex-1">
-      <video autoPlay muted loop playsInline className="">
+      <video autoPlay muted loop playsInline className="max-h-[600px]">
         <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741821180/blobs_btmvqq.webm"
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742221772/holo-blobs_3_sqb6mh.webm"
           type="video/webm"
         />
         Your browser does not support the video tag.
@@ -72,10 +72,10 @@ const MobileWording = () => {
         </span>
       </p>
       <p className="text-lg font-black md:text-2xl">
-        No legal entity can force
+        No legal entity can force access
         <span className="text-black/20">
           {' '}
-          access to your funds. You are the sole owner of your savings.
+          to your funds. You are the sole owner of your savings.
         </span>
       </p>
     </div>

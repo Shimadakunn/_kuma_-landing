@@ -20,11 +20,11 @@ export default function Header() {
       if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.8) {
         setShowBlur(true);
       }
-      if (scrollY >= viewportHeight * 1.8 && scrollY < viewportHeight * 2.85) {
+      if (scrollY >= viewportHeight * 1.8 && scrollY < viewportHeight * 3) {
         setShowBlur(false);
       }
-      if (scrollY >= viewportHeight * 2.85) {
-        setShowBlur(false);
+      if (scrollY >= viewportHeight * 3) {
+        setShowBlur(true);
       }
       if (scrollY >= viewportHeight && scrollY < viewportHeight * 1.9) {
         setTextWhite(false);
@@ -42,7 +42,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="fixed left-0 right-0 top-0 z-10 flex items-start justify-between px-4 py-4 md:px-8 md:py-4">
+    <div className="fixed left-0 right-0 top-0 z-20 flex items-start justify-between px-4 py-4 md:px-8 md:py-4">
       <div
         className={`absolute left-0 right-0 top-0 -z-10 h-[8vh] bg-white/60 backdrop-blur-xl transition-opacity duration-300 md:h-[8vh] ${showBlur ? 'opacity-100' : 'opacity-0'}`}></div>
       <div className="flex items-center gap-1">
@@ -59,7 +59,7 @@ export default function Header() {
         />
       </div>
       <WaitingList />
-      <div className="hidden flex-col items-start gap-1 rounded-xl bg-black p-2 md:flex">
+      {/* <div className="hidden flex-col items-start gap-1 rounded-xl bg-black p-2 md:flex">
         <p className="mx-auto text-center font-black tracking-[0.1em] text-white">Download App</p>
         <Image src="/qrcode.png" alt="kuma" width={150} height={150} className="object-contain" />
       </div>
@@ -68,7 +68,7 @@ export default function Header() {
           <span className="">Download</span>
           <ChevronRight size={10} strokeWidth={1.5} />
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }

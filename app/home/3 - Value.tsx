@@ -29,7 +29,7 @@ const Wording = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
-    amount: 0.8,
+    amount: 0.2,
     margin: '0px 0px -10% 0px',
   });
 

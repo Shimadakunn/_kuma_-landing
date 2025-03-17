@@ -32,7 +32,7 @@ const Wording = () => {
           $60 million in liquidity.
           <span className="text-white/40">
             {' '}
-            No worries of funds unavailability, funds are always available.
+            No worries of funds unavailability, funds will always wait for you.
           </span>
         </p>
         <p className="text-lg font-black md:text-2xl">
@@ -46,7 +46,7 @@ const Wording = () => {
 
 const Bubble = () => {
   return (
-    <div className="relative h-[5vh] flex-1 md:h-[95vh] ">
+    <div className="relative h-[25vh] md:h-[95vh] md:flex-1 ">
       <InfiniteScroll
         isTilted={true}
         tiltDirection="left"
