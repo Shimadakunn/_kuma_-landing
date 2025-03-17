@@ -1,6 +1,4 @@
-import { Button } from '@/components/ui/button';
 import WaitingList from '@/components/WaitingList/page';
-import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
