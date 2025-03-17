@@ -42,7 +42,7 @@ export default function Hero() {
         width="100%"
         autoPlay
         muted
-        // loop
+        loop
         playsInline
         onLoadedData={() => handleVideoLoad('lines')}
         className="absolute inset-0 h-full w-full object-cover">
