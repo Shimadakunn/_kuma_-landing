@@ -8,7 +8,7 @@ export default function Hero() {
         autoPlay
         muted
         playsInline
-        className="absolute inset-0 z-10 mt-10 h-full w-full object-cover md:mt-0">
+        className="absolute inset-0 z-10 mt-10 h-full w-full bg-transparent object-cover md:mt-0">
         <source
           src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742226315/agency-form-date-picker-iphone-mockup_2_zxedsi.webm"
           type="video/webm"
@@ -21,7 +21,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        className="absolute inset-0 h-full w-full object-cover">
+        className="absolute inset-0 h-full w-full bg-transparent object-cover">
         <source
           src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741949000/lines_gndgxr.webm"
           type="video/webm"
