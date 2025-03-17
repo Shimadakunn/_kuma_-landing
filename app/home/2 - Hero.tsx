@@ -1,6 +1,30 @@
 import TextAnim1 from '@/components/ui/text-anim-1';
+import { useEffect, useRef } from 'react';
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const supportsHEVCAlpha = () => {
+      const navigator = window.navigator;
+      const ua = navigator.userAgent.toLowerCase();
+      const hasMediaCapabilities = !!(
+        navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo
+      );
+      const isSafari =
+        ua.indexOf('safari') != -1 && !(ua.indexOf('chrome') != -1) && ua.indexOf('version/') != -1;
+      return isSafari && hasMediaCapabilities;
+    };
+
+    const isIE11 = () => {
+      return !!window.navigator.userAgent.match(/Trident\/7\./);
+    };
+
+    if (!isIE11() && videoRef.current) {
+      videoRef.current.src = supportsHEVCAlpha() ? '/lines.mov' : '/lines.webm';
+    }
+  }, []);
+
   return (
     <div className="relative flex h-[100vh]">
       <video
@@ -15,13 +39,13 @@ export default function Hero() {
         Your browser does not support the video tag.
       </video>
       <video
+        ref={videoRef}
         width="100%"
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 -z-10 h-full w-full object-cover">
-        <source src="lines.webm" type="video/webm" />
+        className="absolute inset-0 h-full w-full object-cover">
         Your browser does not support the video tag.
       </video>
 
