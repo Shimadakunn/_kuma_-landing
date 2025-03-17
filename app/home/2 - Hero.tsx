@@ -21,10 +21,7 @@ export default function Hero() {
         loop
         playsInline
         className="absolute inset-0 -z-10 h-full w-full object-cover">
-        <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741949000/lines_gndgxr.webm"
-          type="video/webm"
-        />
+        <source src="lines.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
