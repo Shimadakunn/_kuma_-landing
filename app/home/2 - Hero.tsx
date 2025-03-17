@@ -31,9 +31,9 @@ export default function Hero() {
         muted
         playsInline
         onLoadedData={() => handleVideoLoad('phone')}
-        className="absolute inset-0 z-10 h-full w-full object-cover">
+        className="absolute inset-0 z-10 mt-10 h-full w-full object-cover md:mt-0">
         <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1741820919/phone_gv8kop.webm"
+          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742226315/agency-form-date-picker-iphone-mockup_2_zxedsi.webm"
           type="video/webm"
         />
         Your browser does not support the video tag.
@@ -53,7 +53,7 @@ export default function Hero() {
         Your browser does not support the video tag.
       </video>
 
-      <h1 className="absolute bottom-10 left-4 right-0 rounded-2xl  text-start text-3xl font-black md:bottom-8 md:left-8 md:text-6xl">
+      <h1 className="absolute bottom-10 left-4 right-0 text-start text-2xl font-black md:bottom-8 md:left-8 md:text-6xl">
         <TextAnim1 delay={1}>WAKE UP THE SAVINGS</TextAnim1>
         <TextAnim1 delay={2.5}>SLEEPING IN YOUR ACCOUNTS</TextAnim1>
       </h1>

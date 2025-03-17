@@ -71,7 +71,9 @@ export default function WaitingList() {
     <Dialog>
       <DialogTrigger asChild>
         <Button className="gap-2">
-          <span className="">Join the waiting list</span>
+          <span>
+            Join <span className="hidden md:inline">the waiting list</span>
+          </span>
           <ChevronRight size={10} strokeWidth={1.5} />
         </Button>
       </DialogTrigger>
