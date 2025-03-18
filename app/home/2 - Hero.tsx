@@ -1,45 +1,48 @@
+'use client';
+
 import TextAnim1 from '@/components/ui/text-anim-1';
 import { useEffect, useRef, useState } from 'react';
-
-const isIOSChrome = () => {
-  const ua = window.navigator.userAgent.toLowerCase();
-  return ua.includes('crios') || (ua.includes('chrome') && ua.includes('mobile'));
-};
-
-const supportsHEVCAlpha = () => {
-  const navigator = window.navigator;
-  const ua = navigator.userAgent.toLowerCase();
-  const hasMediaCapabilities = !!(
-    navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo
-  );
-  const isSafari =
-    ua.indexOf('safari') != -1 && !(ua.indexOf('chrome') != -1) && ua.indexOf('version/') != -1;
-  return isSafari && hasMediaCapabilities;
-};
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoSrc, setVideoSrc] = useState<string>('');
+  const [isIOSChrome, setIsIOSChrome] = useState(false);
+  const [supportsHEVCAlpha, setSupportsHEVCAlpha] = useState(false);
 
   useEffect(() => {
+    const checkBrowser = () => {
+      const ua = window.navigator.userAgent.toLowerCase();
+      setIsIOSChrome(ua.includes('crios') || (ua.includes('chrome') && ua.includes('mobile')));
+
+      const navigator = window.navigator;
+      const hasMediaCapabilities = !!(
+        navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo
+      );
+      const isSafari =
+        ua.indexOf('safari') != -1 && !(ua.indexOf('chrome') != -1) && ua.indexOf('version/') != -1;
+      setSupportsHEVCAlpha(isSafari && hasMediaCapabilities);
+    };
+
     const isIE11 = () => {
       return !!window.navigator.userAgent.match(/Trident\/7\./);
     };
 
+    checkBrowser();
+
     if (!isIE11()) {
-      if (isIOSChrome()) {
+      if (isIOSChrome) {
         setVideoSrc(
           'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292150/phone-chrome_ngjjug.mov'
         );
       } else {
         setVideoSrc(
-          supportsHEVCAlpha()
+          supportsHEVCAlpha
             ? 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292147/phone_pqu7jr.mov'
             : 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292147/phone_jaxcbu.webm'
         );
       }
     }
-  }, []);
+  }, [isIOSChrome, supportsHEVCAlpha]);
 
   return (
     <div className="relative flex h-[100vh]">
@@ -50,14 +53,14 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
-          className={`absolute left-1/2 top-1/2 ${isIOSChrome() ? '-z-10' : 'z-10'} mt-4 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0`}
+          className={`absolute left-1/2 top-1/2 ${isIOSChrome ? '-z-10' : 'z-10'} mt-4 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0`}
         />
       )}
-      {!isIOSChrome() && (
+      {!isIOSChrome && (
         <video
           ref={videoRef}
           src={
-            supportsHEVCAlpha()
+            supportsHEVCAlpha
               ? 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292148/lines_fyzk85.mov'
               : 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292147/lines_mz1tug.webm'
           }
