@@ -28,7 +28,7 @@ export default function Hero() {
 
     if (!isIE11()) {
       if (isIOSChrome()) {
-        setVideoSrc('/phone.webm');
+        setVideoSrc('/phone.mp4');
       } else {
         setVideoSrc(supportsHEVCAlpha() ? '/phone.mov' : '/phone.webm');
       }
@@ -44,7 +44,7 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
-          className="absolute left-1/2 top-1/2 z-10 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0"
+          className="absolute left-1/2 top-1/2 z-10 mt-4 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0"
         />
       )}
       {/* <video
