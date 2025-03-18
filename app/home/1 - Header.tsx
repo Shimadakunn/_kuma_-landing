@@ -40,9 +40,9 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="fixed left-0 right-0 top-0 z-20 flex items-start justify-between px-4 py-4 md:px-8 md:py-4">
+    <div className="fixed left-0 right-0 top-0 z-20 flex items-center justify-between px-4 py-4 md:px-8 md:py-4">
       <div
-        className={`absolute left-0 right-0 top-0 -z-10 h-[8vh] bg-white/60 backdrop-blur-xl transition-opacity duration-300 md:h-[8vh] ${showBlur ? 'opacity-100' : 'opacity-0'}`}></div>
+        className={`absolute bottom-0 left-0 right-0 top-0 -z-10 bg-white/60 backdrop-blur-xl transition-opacity duration-300 ${showBlur ? 'opacity-100' : 'opacity-0'}`}></div>
       <div className="flex items-center gap-1">
         <h1
           className={`text-4xl font-black tracking-tighter md:text-5xl ${textWhite ? 'text-white' : 'text-black'}`}>

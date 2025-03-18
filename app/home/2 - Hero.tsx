@@ -45,7 +45,7 @@ export default function Hero() {
   }, [isIOSChrome, supportsHEVCAlpha]);
 
   return (
-    <div className="relative flex h-[100vh]">
+    <div className="relative flex h-[100dvh]">
       {videoSrc && (
         <video
           ref={videoRef}

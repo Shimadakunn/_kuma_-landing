@@ -70,11 +70,11 @@ export default function WaitingList() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="gap-2">
+        <Button className="h-8 gap-0 px-3 text-sm md:h-12 md:px-4 md:text-base">
           <span>
             Join <span className="hidden md:inline">the waiting list</span>
           </span>
-          <ChevronRight size={10} strokeWidth={1.5} />
+          <ChevronRight size={10} strokeWidth={3} />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-[90%] sm:max-w-[600px]">
