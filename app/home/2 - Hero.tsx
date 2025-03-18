@@ -21,24 +21,19 @@ export default function Hero() {
     };
 
     if (!isIE11() && videoRef.current) {
-      videoRef.current.src = supportsHEVCAlpha() ? '/lines.mov' : '/lines.webm';
+      videoRef.current.src = supportsHEVCAlpha() ? '/phone.mov' : '/phone.webm';
     }
   }, []);
 
   return (
     <div className="relative flex h-[100vh]">
       <video
+        ref={videoRef}
         autoPlay
         muted
         playsInline
-        className="absolute left-1/2 top-1/2 mt-8 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0">
-        <source
-          src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742250641/agency-form-date-picker-iphone-mockup_cachfg.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-      <video
+        className="absolute left-1/2 top-1/2 z-10 mt-8 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0"></video>
+      {/* <video
         ref={videoRef}
         width="100%"
         autoPlay
@@ -47,7 +42,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover">
         Your browser does not support the video tag.
-      </video>
+      </video> */}
 
       <h1 className="absolute bottom-10 left-4 right-0 text-start text-2xl font-black md:bottom-8 md:left-8 md:text-6xl">
         <TextAnim1 delay={1}>WAKE UP THE SAVINGS</TextAnim1>
