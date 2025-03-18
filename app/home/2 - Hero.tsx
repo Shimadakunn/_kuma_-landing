@@ -28,9 +28,15 @@ export default function Hero() {
 
     if (!isIE11()) {
       if (isIOSChrome()) {
-        setVideoSrc('/phone-chrome.mov');
+        setVideoSrc(
+          'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292150/phone-chrome_ngjjug.mov'
+        );
       } else {
-        setVideoSrc(supportsHEVCAlpha() ? '/phone.mov' : '/phone.webm');
+        setVideoSrc(
+          supportsHEVCAlpha()
+            ? 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292147/phone_pqu7jr.mov'
+            : 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292147/phone_jaxcbu.webm'
+        );
       }
     }
   }, []);
@@ -50,7 +56,11 @@ export default function Hero() {
       {!isIOSChrome() && (
         <video
           ref={videoRef}
-          src={supportsHEVCAlpha() ? '/lines.mov' : '/lines.webm'}
+          src={
+            supportsHEVCAlpha()
+              ? 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292148/lines_fyzk85.mov'
+              : 'https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292147/lines_mz1tug.webm'
+          }
           autoPlay
           muted
           loop

@@ -46,7 +46,14 @@ const Wording = () => {
 const YieldSimulation = () => {
   return (
     <div className="relative flex items-center justify-center md:flex-1">
-      <video autoPlay muted loop playsInline className="max-h-[600px]" src="/blobs.mov" />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="max-h-[600px]"
+        src="https://res.cloudinary.com/dvgc2tpte/video/upload/v1742292232/blobs_cb5rrn.mov"
+      />
     </div>
   );
 };
