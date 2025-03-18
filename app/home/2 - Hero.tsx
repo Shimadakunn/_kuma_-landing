@@ -1,6 +1,11 @@
 import TextAnim1 from '@/components/ui/text-anim-1';
 import { useEffect, useRef, useState } from 'react';
 
+const isIOSChrome = () => {
+  const ua = window.navigator.userAgent.toLowerCase();
+  return ua.includes('crios') || (ua.includes('chrome') && ua.includes('mobile'));
+};
+
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoSrc, setVideoSrc] = useState<string>('');
@@ -21,14 +26,9 @@ export default function Hero() {
       return !!window.navigator.userAgent.match(/Trident\/7\./);
     };
 
-    const isIOSChrome = () => {
-      const ua = window.navigator.userAgent.toLowerCase();
-      return ua.includes('crios') || (ua.includes('chrome') && ua.includes('mobile'));
-    };
-
     if (!isIE11()) {
       if (isIOSChrome()) {
-        setVideoSrc('/phone.mp4');
+        setVideoSrc('/phone-chrome.mov');
       } else {
         setVideoSrc(supportsHEVCAlpha() ? '/phone.mov' : '/phone.webm');
       }
@@ -44,7 +44,7 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
-          className="absolute left-1/2 top-1/2 z-10 mt-4 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0"
+          className={`absolute left-1/2 top-1/2 ${isIOSChrome() ? '-z-10' : 'z-10'} mt-4 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0`}
         />
       )}
       {/* <video
