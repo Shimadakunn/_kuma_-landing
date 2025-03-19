@@ -91,17 +91,17 @@ const Socials = () => {
     <div className="flex flex-row items-center gap-2">
       <div
         className="cursor-pointer rounded-xl bg-white p-2"
-        onClick={() => window.open('https://www.linkedin.com/company/kuma-ltd/', '_blank')}>
+        onClick={() => window.open('https://www.linkedin.com/company/kuma-paw/', '_blank')}>
         <Linkedin size={20} className="text-black" fill="black" />
       </div>
       <div
         className="cursor-pointer rounded-xl bg-white p-2"
-        onClick={() => window.open('https://x.com/kumaltd', '_blank')}>
+        onClick={() => window.open('https://x.com/0xShima', '_blank')}>
         <Twitter size={20} className="text-black" fill="black" />
       </div>
       <div
         className="cursor-pointer rounded-xl bg-white p-2"
-        onClick={() => window.open('https://www.tiktok.com/@kumaltd', '_blank')}>
+        onClick={() => window.open('https://www.tiktok.com/@shimadakunn', '_blank')}>
         <Image src="/tiktok.svg" alt="Tiktok" width={20} height={20} className="text-black" />
       </div>
     </div>

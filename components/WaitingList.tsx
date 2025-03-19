@@ -138,7 +138,7 @@ export default function WaitingList() {
                     variant="outline"
                     className="h-10 px-4"
                     onClick={() =>
-                      handleSocialClick('linkedin', 'https://www.linkedin.com/company/holo-ai')
+                      handleSocialClick('linkedin', 'https://www.linkedin.com/company/kuma-paw/')
                     }>
                     {socialClicks.linkedin ? <Check className="h-4 w-4" /> : 'Follow'}
                   </Button>
@@ -150,7 +150,7 @@ export default function WaitingList() {
                   <Button
                     variant="outline"
                     className="h-10 px-4"
-                    onClick={() => handleSocialClick('twitter', 'https://www.twitter.com/holo_ai')}>
+                    onClick={() => handleSocialClick('twitter', 'https://www.twitter.com/0xShima')}>
                     {socialClicks.twitter ? <Check className="h-4 w-4" /> : 'Follow'}
                   </Button>
                 </div>
@@ -167,7 +167,9 @@ export default function WaitingList() {
                   <Button
                     variant="outline"
                     className="h-10 px-4"
-                    onClick={() => handleSocialClick('tiktok', 'https://www.tiktok.com/@holo_ai')}>
+                    onClick={() =>
+                      handleSocialClick('tiktok', 'https://www.tiktok.com/@shimadakunn')
+                    }>
                     {socialClicks.tiktok ? <Check className="h-4 w-4" /> : 'Follow'}
                   </Button>
                 </div>
