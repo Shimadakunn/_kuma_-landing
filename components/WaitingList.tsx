@@ -53,11 +53,11 @@ export default function WaitingList() {
 
         if (!response.ok) throw new Error('Failed to join waiting list');
 
-        await fetch('/api/send', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
-        });
+        // await fetch('/api/send', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ email }),
+        // });
 
         setIsCompleted(true);
       } catch (error) {
