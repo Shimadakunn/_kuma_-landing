@@ -92,7 +92,7 @@ export default function WaitingList() {
           <div className="flex flex-col items-center justify-center space-y-4 py-8">
             <X className="h-16 w-16" color="white" />
             <h2 className="text-xl font-bold text-red-500">Oops! An error occurred</h2>
-            {/* <p className="text-red-500">{error}</p> */}
+            <p className="text-red-500">{error}</p>
             <Button
               onClick={() => {
                 setError(null);
