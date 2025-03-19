@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { getApy, getApyHistory } from './api';
+import { getApy, getApyHistory } from './aave-apy';
 
 interface Store {
   apy: number;

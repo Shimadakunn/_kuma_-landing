@@ -1,24 +1,5 @@
-'use client';
-import { useStore } from '@/lib/store';
-import { useEffect } from 'react';
-import { DeFi, FAQ, Footer, Header, Hero, Interest } from './home';
+import Home from '@/components/home/page';
 
-export default function Home() {
-  const { fetchApy, fetchApyHistory } = useStore();
-  useEffect(() => {
-    fetchApy();
-    fetchApyHistory();
-  }, [fetchApy, fetchApyHistory]);
-  return (
-    <div className="relative">
-      <Header />
-      <Hero />
-      <Interest />
-      <DeFi />
-      <FAQ />
-      {/* <Sections />
-      <YieldSimulation /> */}
-      <Footer />
-    </div>
-  );
+export default function Page() {
+  return <Home />;
 }

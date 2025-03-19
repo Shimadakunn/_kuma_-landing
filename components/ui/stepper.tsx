@@ -138,8 +138,8 @@ export default function Stepper({
           {stepsArray[currentStep - 1]}
         </StepContentWrapper>
         {!isCompleted && (
-          <div className={` ${footerClassName}`}>
-            <div className={`mt-10 flex ${currentStep !== 1 ? 'justify-between' : 'justify-end'}`}>
+          <div className={`${footerClassName} mt-4 md:px-4`}>
+            <div className={`flex ${currentStep !== 1 ? 'justify-between' : 'justify-end'}`}>
               {currentStep !== 1 && (
                 <button
                   onClick={handleBack}
@@ -153,7 +153,7 @@ export default function Stepper({
                 </button>
               )}
               <Button
-                className=" h-10 bg-white px-4 py-0 text-base font-bold text-black"
+                className=" h-10 border bg-white px-4 py-0 text-base font-bold text-black"
                 onClick={isLastStep ? handleComplete : handleNext}
                 disabled={disableNextButton ? disableNextButton(currentStep) : false}
                 {...nextButtonProps}>
@@ -181,7 +181,7 @@ function StepContentWrapper({
       style={{ position: 'relative', overflow: 'hidden' }}
       animate={{ height: isCompleted ? 0 : parentHeight }}
       transition={{ type: 'spring', duration: 0.4 }}
-      className={className}>
+      className={`${className}`}>
       <AnimatePresence initial={false} mode="sync" custom={direction}>
         {!isCompleted && (
           <SlideTransition
@@ -234,7 +234,7 @@ const stepVariants = {
 };
 
 export function Step({ children }: StepProps) {
-  return <div className="px-8">{children}</div>;
+  return <div className="md:px-4">{children}</div>;
 }
 
 function StepIndicator({

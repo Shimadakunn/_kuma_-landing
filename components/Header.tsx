@@ -1,4 +1,4 @@
-import WaitingList from '@/components/WaitingList/page';
+import WaitingList from '@/components/WaitingList';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -45,7 +45,7 @@ export default function Header() {
         className={`absolute bottom-0 left-0 right-0 top-0 -z-10 bg-white/60 backdrop-blur-xl transition-opacity duration-300 ${showBlur ? 'opacity-100' : 'opacity-0'}`}></div>
       <div className="flex items-center gap-1">
         <h1
-          className={`text-4xl font-black tracking-tighter md:text-5xl ${textWhite ? 'text-white' : 'text-black'}`}>
+          className={`text-3xl font-black tracking-tighter md:text-5xl ${textWhite ? 'text-white' : 'text-black'}`}>
           Kuma
         </h1>
         <Image
@@ -53,7 +53,7 @@ export default function Header() {
           alt="kuma"
           width={500}
           height={500}
-          className="h-[30px] w-[30px] object-contain md:h-[40px] md:w-[40px]"
+          className="h-[25px] w-[25px] object-contain md:h-[40px] md:w-[40px]"
         />
       </div>
       <WaitingList />

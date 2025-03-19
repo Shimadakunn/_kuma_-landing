@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import SmoothScroll from '../components/SmoothScroll';
+import SmoothScroll from '../components/ui/smooth-scroll';
 import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 

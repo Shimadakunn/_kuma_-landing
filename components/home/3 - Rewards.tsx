@@ -1,11 +1,11 @@
 import InfiniteScroll from '@/components/ui/infinite-scroll';
 import { GradualSpacing } from '@/components/ui/text-anim-2';
 
-export default function DeFi() {
+export default function Rewards() {
   return (
     <div className="flex h-[95vh] flex-col-reverse justify-center gap-10 bg-black px-4 text-white md:flex-row md:items-center md:gap-8">
       <MobileWording />
-      <Bubble />
+      <RewardsComponent />
       <Wording />
     </div>
   );
@@ -44,7 +44,7 @@ const Wording = () => {
   );
 };
 
-const Bubble = () => {
+const RewardsComponent = () => {
   return (
     <div className="relative h-[25vh] md:h-[95vh] md:flex-1 ">
       <InfiniteScroll

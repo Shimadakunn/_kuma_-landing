@@ -1,10 +1,10 @@
 import { BlurIn } from '@/components/ui/text-anim-3';
 
-export default function FAQ() {
+export default function Security() {
   return (
     <div className="flex h-[95vh] flex-col justify-center gap-2 px-4 py-12 md:flex-row md:items-center md:gap-8 md:py-0">
       <Wording />
-      <YieldSimulation />
+      <Blobs />
       <MobileWording />
     </div>
   );
@@ -43,7 +43,7 @@ const Wording = () => {
   );
 };
 
-const YieldSimulation = () => {
+const Blobs = () => {
   return (
     <div className="relative flex items-center justify-center md:flex-1">
       <video

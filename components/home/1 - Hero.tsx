@@ -10,6 +10,10 @@ export default function Hero() {
   const [supportsHEVCAlpha, setSupportsHEVCAlpha] = useState(false);
 
   useEffect(() => {
+    console.log(videoSrc);
+  }, [videoSrc]);
+
+  useEffect(() => {
     const checkBrowser = () => {
       const ua = window.navigator.userAgent.toLowerCase();
       setIsIOSChrome(ua.includes('crios') || (ua.includes('chrome') && ua.includes('mobile')));
@@ -45,7 +49,7 @@ export default function Hero() {
   }, [isIOSChrome, supportsHEVCAlpha]);
 
   return (
-    <div className="relative flex h-[100dvh]">
+    <div className="relative flex h-[100vh]">
       {videoSrc && (
         <video
           ref={videoRef}
@@ -53,7 +57,7 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
-          className={`absolute left-1/2 top-1/2 ${isIOSChrome ? '-z-10' : 'z-10'} mt-4 aspect-square h-full -translate-x-1/2 -translate-y-1/2 object-cover md:mt-0`}
+          className={`absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 ${isIOSChrome ? '-z-10' : 'z-10'} mt-4 h-full object-cover md:mt-0`}
         />
       )}
       {!isIOSChrome && (
@@ -75,7 +79,7 @@ export default function Hero() {
 
       <h1 className="absolute bottom-10 left-4 right-0 text-start text-2xl font-black md:bottom-8 md:left-8 md:text-6xl">
         <TextAnim1 delay={1}>WAKE UP THE SAVINGS</TextAnim1>
-        <TextAnim1 delay={2.5}>SLEEPING IN YOUR ACCOUNTS</TextAnim1>
+        <TextAnim1 delay={2}>SLEEPING IN YOUR ACCOUNTS</TextAnim1>
       </h1>
     </div>
   );

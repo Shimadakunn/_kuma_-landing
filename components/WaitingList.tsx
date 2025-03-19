@@ -161,10 +161,6 @@ export default function WaitingList() {
                 <p className="mt-2 text-sm text-red-500">Please enter a valid email address</p>
               )}
             </Step>
-            {/* <Step>
-              <h1 className="mb-4 text-xl font-bold">Thank you for your interest!</h1>
-              <p>We will be in touch soon.</p>
-            </Step> */}
           </Stepper>
         )}
       </DialogContent>

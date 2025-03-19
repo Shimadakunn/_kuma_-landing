@@ -1,4 +1,4 @@
-import { getApyHistory } from '@/lib/api';
+import { getApyHistory } from '@/lib/aave-apy';
 import { useStore } from '@/lib/store';
 import { motion, useInView, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
@@ -12,7 +12,7 @@ import {
   YAxis,
 } from 'recharts';
 
-export default function Interest() {
+export default function Apy() {
   return (
     <div className="flex h-[95vh] flex-col justify-center gap-10 px-4 md:flex-row md:items-center md:gap-0 md:px-8">
       <Wording />
