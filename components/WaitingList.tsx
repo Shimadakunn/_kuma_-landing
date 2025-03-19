@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Stepper, { Step } from '@/components/ui/stepper';
-import { Check, ChevronRight, Linkedin, Twitter } from 'lucide-react';
+import { Check, ChevronRight, Linkedin, Twitter, X, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
@@ -15,6 +15,8 @@ export default function WaitingList() {
   const [email, setEmail] = useState('');
   const [currentStep, setCurrentStep] = useState(1);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const isEmailValid = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -37,7 +39,8 @@ export default function WaitingList() {
 
   const handleComplete = async () => {
     if (canProceedToNextStep(currentStep)) {
-      setIsCompleted(true);
+      setIsLoading(true);
+      setError(null);
 
       try {
         const apiUrl = `https://kuma-server.vercel.app/register-waiting-list/${email}`;
@@ -48,21 +51,21 @@ export default function WaitingList() {
           method: 'GET',
         });
 
-        if (!response.ok) throw new Error('Failed to send message');
-      } catch (error) {
-        console.error(error);
-      }
+        if (!response.ok) throw new Error('Failed to join waiting list');
 
-      try {
-        const response = await fetch('/api/send', {
+        await fetch('/api/send', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email }),
         });
 
-        if (!response.ok) throw new Error('Failed to send message');
+        setIsCompleted(true);
       } catch (error) {
         console.error(error);
+        setError(error instanceof Error ? error.message : 'Something went wrong');
+        setIsCompleted(false);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -84,6 +87,26 @@ export default function WaitingList() {
             <Check className="h-16 w-16" color="white" />
             <h2 className="text-xl font-bold">Thank you for joining!</h2>
             <p>We&apos;ll be in touch soon.</p>
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center justify-center space-y-4 py-8">
+            <X className="h-16 w-16" color="white" />
+            <h2 className="text-xl font-bold text-red-500">Oops! An error occurred</h2>
+            {/* <p className="text-red-500">{error}</p> */}
+            <Button
+              onClick={() => {
+                setError(null);
+                setIsCompleted(false);
+                setIsLoading(false);
+              }}
+              variant="outline">
+              Try Again
+            </Button>
+          </div>
+        ) : isLoading ? (
+          <div className="flex flex-col items-center justify-center space-y-4 py-8">
+            <Loader2 className="h-16 w-16 animate-spin" color="white" />
+            <h2 className="text-xl font-bold">Joining waiting list...</h2>
           </div>
         ) : (
           <Stepper
