@@ -34,7 +34,7 @@ const DesktopFooter = () => {
               className="h-[30px] w-[30px] object-contain"
             />
           </div>
-          <h1 className="text-2xl font-extrabold">Faites beaucoup avec moins.</h1>
+          <h1 className="text-2xl font-extrabold">Finance, for everyone.</h1>
         </div>
 
         <Button className="flex flex-row items-center gap-2 bg-white text-black">
@@ -68,7 +68,7 @@ const MobileFooter = () => {
           className="h-[25px] w-[25px] object-contain"
         />
       </div>
-      <h1 className="text-xl font-extrabold">Faites beaucoup avec moins.</h1>
+      <h1 className="text-xl font-extrabold">Finance, for everyone.</h1>
       <div className="my-6 flex w-full flex-row items-center justify-between">
         <Socials />
         <Button className="flex flex-row items-center gap-2 bg-white text-black">
