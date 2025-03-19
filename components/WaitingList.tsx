@@ -50,6 +50,7 @@ export default function WaitingList() {
           },
           method: 'GET',
         });
+        console.log('response', response);
 
         if (!response.ok) throw new Error('Failed to join waiting list');
 
