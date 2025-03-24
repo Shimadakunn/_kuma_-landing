@@ -1,6 +1,8 @@
 import WaitingList from '@/components/WaitingList';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Button } from './ui/button';
+import { ChevronRight } from 'lucide-react';
 
 export default function Header() {
   const [showBlur, setShowBlur] = useState(false);
@@ -56,7 +58,14 @@ export default function Header() {
           className="h-[25px] w-[25px] object-contain md:h-[40px] md:w-[40px]"
         />
       </div>
-      <WaitingList />
+      <WaitingList>
+        <Button className="h-8 gap-0 px-3 text-sm md:h-12 md:px-4 md:text-base">
+          <span>
+            <span className="hidden md:inline">Get</span> Early Access
+          </span>
+          <ChevronRight size={10} strokeWidth={3} />
+        </Button>
+      </WaitingList>
       {/* <div className="hidden flex-col items-start gap-1 rounded-xl bg-black p-2 md:flex">
         <p className="mx-auto text-center font-black tracking-[0.1em] text-white">Download App</p>
         <Image src="/qrcode.png" alt="kuma" width={150} height={150} className="object-contain" />

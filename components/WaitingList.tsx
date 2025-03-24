@@ -1,12 +1,16 @@
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Stepper, { Step } from '@/components/ui/stepper';
-import { Check, ChevronRight, Linkedin, Twitter, X, Loader2 } from 'lucide-react';
+import { Check, Linkedin, Twitter, X, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 
-export default function WaitingList() {
+export default function WaitingList({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   const [socialClicks, setSocialClicks] = useState({
     linkedin: false,
     twitter: false,
@@ -52,7 +56,7 @@ export default function WaitingList() {
         });
         console.log('response', response);
 
-        if (!response.ok) throw new Error('Failed to join waiting list');
+        if (!response.ok) throw new Error('Failed to join white list');
 
         // await fetch('/api/send', {
         //   method: 'POST',
@@ -73,16 +77,9 @@ export default function WaitingList() {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button className="h-8 gap-0 px-3 text-sm md:h-12 md:px-4 md:text-base">
-          <span>
-            Join <span className="hidden md:inline">the waiting list</span>
-          </span>
-          <ChevronRight size={10} strokeWidth={3} />
-        </Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="w-[90%] sm:max-w-[600px]">
-        <DialogTitle className="text-2xl font-black">Join the waiting list</DialogTitle>
+        <DialogTitle className="text-2xl font-black">Get early access</DialogTitle>
         {isCompleted ? (
           <div className="flex flex-col items-center justify-center space-y-4 py-8">
             <Check className="h-16 w-16" color="white" />
@@ -107,7 +104,7 @@ export default function WaitingList() {
         ) : isLoading ? (
           <div className="flex flex-col items-center justify-center space-y-4 py-8">
             <Loader2 className="h-16 w-16 animate-spin" color="white" />
-            <h2 className="text-xl font-bold">Joining waiting list...</h2>
+            <h2 className="text-xl font-bold">Joining early access...</h2>
           </div>
         ) : (
           <Stepper

@@ -5,6 +5,8 @@ import { ChevronRight, Linkedin, Twitter } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import WaitingList from '@/components/WaitingList';
+
 export default function Footer() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -37,10 +39,12 @@ const DesktopFooter = () => {
           <h1 className="text-2xl font-extrabold">Finance, for everyone.</h1>
         </div>
 
-        <Button className="flex flex-row items-center gap-2 bg-white text-black">
-          <span className="">Download</span>
-          <ChevronRight size={40} strokeWidth={3.5} />
-        </Button>
+        <WaitingList>
+          <Button className="flex flex-row items-center gap-2 bg-white text-black">
+            <span className="">Early Access</span>
+            <ChevronRight size={40} strokeWidth={3.5} />
+          </Button>
+        </WaitingList>
       </div>
       <div className="flex w-full flex-row items-center justify-between">
         <h1 className=" text-xs font-medium text-white/40">
@@ -71,10 +75,12 @@ const MobileFooter = () => {
       <h1 className="text-xl font-extrabold">Finance, for everyone.</h1>
       <div className="my-6 flex w-full flex-row items-center justify-between">
         <Socials />
-        <Button className="flex flex-row items-center gap-2 bg-white text-black">
-          <span className="">Download</span>
-          <ChevronRight size={40} strokeWidth={3.5} />
-        </Button>
+        <WaitingList>
+          <Button className="flex flex-row items-center gap-2 bg-white text-black">
+            <span className="">Early Access</span>
+            <ChevronRight size={40} strokeWidth={3.5} />
+          </Button>
+        </WaitingList>
       </div>
       <h1 className=" text-xs font-medium text-white/40">
         @Kuma LTD - 2025
